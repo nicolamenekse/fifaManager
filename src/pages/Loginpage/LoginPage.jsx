@@ -21,7 +21,7 @@ export default function LoginPage() {
 
   const loginSubmit = (values) => {
     dispatch(login(values));
-    console.log("giriş başarılı ! ");
+    console.log("giriş başarılı ! ",values);
   };
   return (
     <div>

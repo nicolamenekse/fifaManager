@@ -4,6 +4,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
 
 import authReducer from './auth/authSlice'
+import matchReducer from "./match/matchSlice"
 
 const authpersistConfig = {
     key: "auth",
@@ -11,8 +12,15 @@ const authpersistConfig = {
     whitelist: ["token"]
 }
 
+const matchPersistConfig = {
+    key:"match",
+    storage,
+    whiteList:["items"]
+}
+
 const rootReducer = combineReducers({
-    auth: persistReducer(authpersistConfig, authReducer)
+    auth: persistReducer(authpersistConfig, authReducer),
+    match:persistReducer(matchPersistConfig, matchReducer )
 })
 
 export const store = configureStore({

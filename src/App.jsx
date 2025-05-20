@@ -10,30 +10,42 @@ import HomePage from "./pages/Homepage/HomePage";
 import LoginPage from "./pages/Loginpage/LoginPage";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import MatchPage from './pages/Matchpage/MatchPage'
+import MatchPage from "./pages/Matchpage/MatchPage";
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-const loading = useSelector(selectLoading)
+  const loading = useSelector(selectLoading);
 
   useEffect(() => {
-    dispatch(refresh);
-  });
+    dispatch(refresh());
+  },[dispatch]);
   return (
     <>
       <Toaster />
-      {
-        isRefreshing ? (
-          <p> {loading} </p>
-        ):(
-          <Routes>
-            <Route path="/" element={<HomePage/>} />
-            <Route path="/register" element={<RestrictedRoute redirectTo = "/match" element={<RegisterPage/>} />} />
-            <Route path="/login" element={<RestrictedRoute redirectTo="/match" elemetn={<LoginPage/>} />} />
-            <Route path="/match" element={<PrivateRoute redirectTo="/" element={<MatchPage/>} />} />
-          </Routes>
-        )
-      }
+      {isRefreshing ? (
+        <p> {loading} </p>
+      ) : (
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute redirectTo="/match" element={<RegisterPage />} />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute redirectTo="/match" element={<LoginPage />} />
+            }
+          />
+          <Route
+            path="/match"
+            element={<PrivateRoute redirectTo="/" element={<MatchPage />} />}
+          />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      )}
     </>
   );
 }

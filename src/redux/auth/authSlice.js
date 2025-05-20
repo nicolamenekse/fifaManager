@@ -22,7 +22,7 @@ export const authSlice = createSlice({
                     state.isLoggedIn = true,
                     state.error = null,
                     state.loading = false
-                    console.log("kayıt edildi")
+                console.log("kayıt edildi")
             })
 
             .addCase(register.rejected, (state, action) => {
@@ -69,16 +69,17 @@ export const authSlice = createSlice({
                     state.isRefreshing = true
             })
 
+            
             .addCase(refresh.fulfilled, (state, action) => {
                 state.loading = false,
                     state.user = action.payload.user,
-                    state.token = action.payload.token,
                     state.isLoggedIn = true,
                     state.isRefreshing = false
             })
             .addCase(refresh.rejected, (state, action) => {
                 state.error = action.payload,
-                    state.loading = false
+                    state.loading = false,
+                    state.isRefreshing = false
             })
 
     }

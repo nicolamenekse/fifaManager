@@ -15,7 +15,7 @@ export const register = createAsyncThunk("users/signup", async (userData, thunkA
         if (response.data.token) {
             setAuthHeader(response.data.token)
         } else {
-            return thunkAPI.rejectWithValue("token not foundß")
+            return thunkAPI.rejectWithValue("token not found")
         }
 
         return response.data
@@ -28,6 +28,8 @@ export const login = createAsyncThunk("users/login", async (userData, thunkAPI) 
     try {
         const response = await axios.post("/users/login", userData)
         setAuthHeader(response.data.token)
+        console.log(response.data.token)
+        console.log(userData)
         return response.data
     } catch (err) {
         return thunkAPI.rejectWithValue(err.message)
