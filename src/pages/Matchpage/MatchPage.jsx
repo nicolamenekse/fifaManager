@@ -1,8 +1,8 @@
 import { Field, Form, Formik } from "formik";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectItems } from "../../redux/match/matchSelectors";
-import {addMatch} from '../../redux/match/matchOperations'
+import {addMatch, deleteMatch} from '../../redux/match/matchOperations'
 import { fetchAllMatch } from "../../redux/match/matchOperations";
 import { logout } from "../../redux/auth/authOperations";
 export default function MatchPage() {
@@ -10,12 +10,18 @@ export default function MatchPage() {
   const items = useSelector(selectItems)
   
   const initialValues = {
-    name: "",
+    teamA: "",
+    teamB:"",
     number: "",
   };
   const handleAddMatch = (values) => {
-    dispatch(addMatch(values));
-    console.log(values)
+    const combined={
+      name:`${values.teamA} vs ${values.teamB}`,
+      number:values.number,
+    }
+
+    dispatch(addMatch(combined));
+    console.log(combined)
   };
 
   useEffect(()=>{
@@ -25,16 +31,21 @@ export default function MatchPage() {
   const exitClick = ()=>{
     dispatch(logout())
   }
+
+  const deleteClick = (id)=>{
+    dispatch(deleteMatch(id))
+  }
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={handleAddMatch} >
         <Form>
           <Field
             type="text"
-            id="name"
-            name="name"
+            id="teamA"
+            name="teamA"
             placeholder="Kim vs Kim ? "
           />
+          <Field type="text" id="teamB" name="teamB" placeholder="teamB" />
           <Field
             type="text"
             id="number"
@@ -44,17 +55,16 @@ export default function MatchPage() {
           <button type="submit">Kaydet !</button>
         </Form>
       </Formik>
-
       {
-        items.map((item,index)=>{
+        items.map((item)=>{
           return(
-            <p key={index}>
-              {item.name}
-            </p>
+            <ul>
+              <li key={item.id}  > {item.name} / {item.number}  </li>
+               <button onClick={()=>deleteClick(item.id)} >Delete</button>
+    </ul>
           )
         })
       }
-
       <button onClick={exitClick} >Cıkıs yap</button>
     </div>
   );
