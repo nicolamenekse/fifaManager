@@ -1,33 +1,35 @@
+import { Field, Form, Formik } from "formik";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { register } from "../../redux/auth/authOperations";
-import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { login } from "../../redux/auth/authOperations";
 
-export default function RegisterPage() {
+export default function LoginPage() {
   const dispatch = useDispatch();
   const initialValues = {
-    name: "",
     email: "",
     password: "",
   };
+
   const validationSchema = Yup.object({
-    email: Yup.string().email("geçerli mail gir").required("zorunludur"),
-    password: Yup.string().min(4, "en az 4 karakterli").required("zorunlu"),
+    email: Yup.string().email("Geçerli değil").required("zorunlu"),
+    password: Yup.string()
+      .min(4, "en az 4 karakterli olmalıdır")
+      .required("zorunlu"),
   });
 
-  const registerSubmit = (values) => {
-    dispatch(register(values));
-    console.log("kayıt basarılır");
+  const loginSubmit = (values) => {
+    dispatch(login(values));
+    console.log("giriş başarılı ! ");
   };
   return (
     <div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={registerSubmit}
+        onSubmit={loginSubmit}
       >
         <Form>
-          <Field type="text" id="name" name="name" placeholder="name" />
           <Field type="email" id="email" name="email" placeholder="email" />
           <Field
             type="password"
@@ -35,7 +37,7 @@ export default function RegisterPage() {
             name="password"
             placeholder="password"
           />
-          <button type="submit">Kayıt ol</button>
+          <button type="submit">Login !</button>
         </Form>
       </Formik>
     </div>

@@ -22,6 +22,7 @@ export const authSlice = createSlice({
                     state.isLoggedIn = true,
                     state.error = null,
                     state.loading = false
+                    console.log("kayıt edildi")
             })
 
             .addCase(register.rejected, (state, action) => {
@@ -63,7 +64,7 @@ export const authSlice = createSlice({
                     state.loading = false
             })
 
-            .addCase(refresh.pending, (state, action) => {
+            .addCase(refresh.pending, (state) => {
                 state.loading = true,
                     state.isRefreshing = true
             })
