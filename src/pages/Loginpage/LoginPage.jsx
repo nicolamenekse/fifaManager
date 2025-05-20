@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { login } from "../../redux/auth/authOperations";
+import { Link } from "react-router-dom";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -40,6 +41,8 @@ export default function LoginPage() {
           <button type="submit">Login !</button>
         </Form>
       </Formik>
+      <Link to="/" >Ana Sayfa</Link>
+       <Link to="/register" >Kayıt Ol</Link>
     </div>
   );
 }

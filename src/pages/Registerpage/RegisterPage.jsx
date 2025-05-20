@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/authOperations";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ export default function RegisterPage() {
           <button type="submit">Kayıt ol</button>
         </Form>
       </Formik>
+
+      <Link to="/" >Ana Sayfa</Link>
+      <Link to="/login" >Giriş yap</Link>
     </div>
   );
 }
