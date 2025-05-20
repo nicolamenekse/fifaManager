@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styles from './HomePage.module.css'
+import styles from './Homepage.module.css'
 
 export default function HomePage() {
   return (

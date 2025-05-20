@@ -5,7 +5,7 @@ import { selectItems } from "../../redux/match/matchSelectors";
 import {addMatch, deleteMatch} from '../../redux/match/matchOperations'
 import { fetchAllMatch } from "../../redux/match/matchOperations";
 import { logout } from "../../redux/auth/authOperations";
-import styles from "./MatchPage.module.css";
+import styles from "./Matchpage.module.css";
 
 export default function MatchPage() {
   const dispatch = useDispatch();
