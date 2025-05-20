@@ -33,11 +33,12 @@ export const authSlice = createSlice({
                 state.loading = true,
                     state.error = null
             })
+
             .addCase(login.fulfilled, (state, action) => {
                 state.loading = false,
                     state.user = action.payload.user,
                     state.token = action.payload.token,
-                    state.isLoggedIn = true,
+                    state.isLoggedIn = true
             })
 
             .addCase(login.rejected, (state, action) => {
@@ -63,8 +64,24 @@ export const authSlice = createSlice({
             })
 
             .addCase(refresh.pending, (state, action) => {
-                state.isRefreshing = true
+                state.loading = true,
+                    state.isRefreshing = true
             })
+
+            .addCase(refresh.fulfilled, (state, action) => {
+                state.loading = false,
+                    state.user = action.payload.user,
+                    state.token = action.payload.token,
+                    state.isLoggedIn = true,
+                    state.isRefreshing = false
+            })
+            .addCase(refresh.rejected, (state, action) => {
+                state.error = action.payload,
+                    state.loading = false
+            })
+
     }
 
 })
+
+export default authSlice.reducer

@@ -1,8 +1,10 @@
 import persistReducer from "redux-persist/es/persistReducer"
 import persistStore from "redux-persist/es/persistStore"
-import {configureStore,combineReducers} from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import storage from 'redux-persist/lib/storage'
 
 import authReducer from './auth/authSlice'
+
 const authpersistConfig = {
     key: "auth",
     storage,
@@ -21,4 +23,4 @@ export const store = configureStore({
         })
 })
 
-export const persistor = persistStore(store)
+// export const persistor = persistStore(store)
