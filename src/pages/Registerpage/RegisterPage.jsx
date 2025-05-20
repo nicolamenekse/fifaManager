@@ -3,7 +3,7 @@ import { register } from "../../redux/auth/authOperations";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import styles from "./RegisterPage.module.css";
+import styles from "./Registerpage.module.css";
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
