@@ -10,7 +10,7 @@ export default function HomePage() {
         <Link to="/register" className={styles.button}>Register</Link>
         <Link to="/login" className={styles.button}>Login</Link>
       </div>
-      <p className={styles.subtitle}>Take control of your dream team</p>
+      <p className={styles.subtitle}>Yenilginin tadını çıkar orhaaaaaaaaaağn</p>
     </div>
   )
 }
