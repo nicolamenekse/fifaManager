@@ -1,22 +1,24 @@
 import { Field, Form, Formik } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectItems } from "../../redux/match/matchSelectors";
 import {addMatch, deleteMatch} from '../../redux/match/matchOperations'
 import { fetchAllMatch } from "../../redux/match/matchOperations";
 import { logout } from "../../redux/auth/authOperations";
+import styles from "./MatchPage.module.css";
+
 export default function MatchPage() {
   const dispatch = useDispatch();
   const items = useSelector(selectItems)
   
   const initialValues = {
-    teamA: "",
-    teamB:"",
+    player: "",
+    team:"",
     number: "",
   };
   const handleAddMatch = (values) => {
     const combined={
-      name:`${values.teamA} vs ${values.teamB}`,
+      name:`${values.player} / ${values.team}`,
       number:values.number,
     }
 
@@ -36,36 +38,51 @@ export default function MatchPage() {
     dispatch(deleteMatch(id))
   }
   return (
-    <div>
+    <div className={styles.container}>
       <Formik initialValues={initialValues} onSubmit={handleAddMatch} >
-        <Form>
+        <Form className={styles.form}>
           <Field
+            className={styles.input}
             type="text"
-            id="teamA"
-            name="teamA"
+            id="player"
+            name="player"
             placeholder="Kim vs Kim ? "
           />
-          <Field type="text" id="teamB" name="teamB" placeholder="teamB" />
+          <Field 
+            className={styles.input}
+            type="text" 
+            id="team" 
+            name="team" 
+            placeholder="Takımları yaz" 
+          />
           <Field
+            className={styles.input}
             type="text"
             id="number"
             name="number"
             placeholder="Kaç x Kaç ?"
           />
-          <button type="submit">Kaydet !</button>
+          <button className={styles.submitButton} type="submit">Kaydet !</button>
         </Form>
       </Formik>
-      {
-        items.map((item)=>{
-          return(
-            <ul>
-              <li key={item.id}  > {item.name} / {item.number}  </li>
-               <button onClick={()=>deleteClick(item.id)} >Delete</button>
-    </ul>
-          )
-        })
-      }
-      <button onClick={exitClick} >Cıkıs yap</button>
+      
+      <div className={styles.matchList}>
+        {items.map((item) => (
+          <div key={item.id} className={styles.matchItem}>
+            <span className={styles.matchInfo}>{item.name} / {item.number}</span>
+            <button 
+              className={styles.deleteButton}
+              onClick={() => deleteClick(item.id)}
+            >
+              Delete
+            </button>
+          </div>
+        ))}
+      </div>
+      
+      <button className={styles.exitButton} onClick={exitClick}>
+        Çıkış yap
+      </button>
     </div>
   );
 }

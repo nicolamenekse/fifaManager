@@ -1,0 +1,124 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    padding: 20px;
+    color: #ffffff;
+  }
+  
+  .form {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    background: #2a2a2a;
+    border: 1px solid #ffd700;
+    border-radius: 5px;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #ff6b6b;
+    box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+  }
+  
+  .submitButton {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: linear-gradient(to bottom, #ffd700, #ff8c00);
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .submitButton:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to bottom, #ff8c00, #ffd700);
+  }
+  
+  .matchList {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+  }
+  
+  .matchItem {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ffd700;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+  }
+  
+  .matchItem:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  }
+  
+  .matchInfo {
+    color: #ffd700;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .deleteButton {
+    padding: 8px 16px;
+    background: linear-gradient(to bottom, #ff4444, #cc0000);
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .deleteButton:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to bottom, #cc0000, #ff4444);
+  }
+  
+  .exitButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    background: linear-gradient(to bottom, #ffd700, #ff8c00);
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .exitButton:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to bottom, #ff8c00, #ffd700);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  }
+  

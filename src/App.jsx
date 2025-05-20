@@ -3,7 +3,7 @@ import "./App.css";
 import RegisterPage from "./pages/Registerpage/RegisterPage";
 import { useEffect } from "react";
 import { refresh } from "./redux/auth/authOperations";
-import { selectIsRefreshing, selectLoading } from "./redux/auth/authSelectors";
+import { selectIsRefreshing } from "./redux/auth/authSelectors";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Homepage/HomePage";
@@ -11,19 +11,22 @@ import LoginPage from "./pages/Loginpage/LoginPage";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MatchPage from "./pages/Matchpage/MatchPage";
+
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-  const loading = useSelector(selectLoading);
 
   useEffect(() => {
     dispatch(refresh());
   },[dispatch]);
+
   return (
     <>
       <Toaster />
       {isRefreshing ? (
-        <p> {loading} </p>
+        <div className="loading">
+          <p>Loading...</p>
+        </div>
       ) : (
         <Routes>
           <Route path="/" element={<HomePage />} />

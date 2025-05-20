@@ -1,0 +1,57 @@
+.homeContainer {
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://wallpapercave.com/wp/wp1874155.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.title {
+    color: #ffffff;
+    font-size: 4rem;
+    font-family: 'Impact', sans-serif;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 2rem;
+}
+
+.button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: linear-gradient(45deg, #1a472a, #2d8a4a);
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #2d8a4a, #1a472a);
+    box-shadow: 0 0 15px rgba(45, 138, 74, 0.5);
+}
+
+.subtitle {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}

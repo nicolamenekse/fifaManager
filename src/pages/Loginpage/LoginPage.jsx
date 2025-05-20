@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { login } from "../../redux/auth/authOperations";
 import { Link } from "react-router-dom";
+import styles from "./Loginpage.module.css";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -21,28 +22,52 @@ export default function LoginPage() {
 
   const loginSubmit = (values) => {
     dispatch(login(values));
-    console.log("giriş başarılı ! ",values);
+    console.log("giriş başarılı ! ", values);
   };
   return (
-    <div>
+    <div className={styles.container}>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={loginSubmit}
       >
-        <Form>
-          <Field type="email" id="email" name="email" placeholder="email" />
-          <Field
-            type="password"
-            id="password"
-            name="password"
-            placeholder="password"
-          />
-          <button type="submit">Login !</button>
-        </Form>
+        {({ errors, touched }) => (
+          <Form className={styles.form}>
+            <label className={styles.label}>Email</label>
+            <Field 
+              className={styles.input}
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="email" 
+            />
+            {errors.email && touched.email && (
+              <div className={styles.error}>{errors.email}</div>
+            )}
+            
+            <label className={styles.label}>Parola</label>
+            <Field
+              className={styles.input}
+              type="password"
+              id="password"
+              name="password"
+              placeholder="password"
+            />
+            {errors.password && touched.password && (
+              <div className={styles.error}>{errors.password}</div>
+            )}
+            
+            <button className={styles.submitButton} type="submit">
+              Login !
+            </button>
+          </Form>
+        )}
       </Formik>
-      <Link to="/" >Ana Sayfa</Link>
-       <Link to="/register" >Kayıt Ol</Link>
+      
+      <div className={styles.links}>
+        <Link className={styles.link} to="/">Ana Sayfa</Link>
+        <Link className={styles.link} to="/register">Kayıt Ol</Link>
+      </div>
     </div>
   );
 }
