@@ -19,16 +19,22 @@ const matchPersistConfig = {
     whiteList:["items"]
 }
 
+const scorePersistConfig = {
+    key: "scores",
+    storage,
+    whitelist: ["players"]
+}
+
 const rootReducer = combineReducers({
     auth: persistReducer(authpersistConfig, authReducer),
-    match:persistReducer(matchPersistConfig, matchReducer ),
-    scores: scoreReducer
+    match: persistReducer(matchPersistConfig, matchReducer),
+    scores: persistReducer(scorePersistConfig, scoreReducer)
 })
 
 export const store = configureStore({
     reducer: rootReducer,
-    middleWare: (getDefaultMiddleWare) =>
-        getDefaultMiddleWare({
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
             serializableCheck: false
         })
 })
