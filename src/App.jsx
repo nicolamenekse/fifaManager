@@ -3,7 +3,7 @@ import "./App.css";
 import RegisterPage from "./pages/Registerpage/RegisterPage";
 import { useEffect } from "react";
 import { refresh } from "./redux/auth/authOperations";
-import { selectIsRefreshing } from "./redux/auth/authSelectors";
+import { selectIsRefreshing, selectIsLoggedIn } from "./redux/auth/authSelectors";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Homepage/HomePage";
@@ -16,6 +16,7 @@ import ScoreBoard from './components/ScoreBoard';
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     dispatch(refresh());
@@ -50,7 +51,7 @@ function App() {
           <Route path="*" element={<HomePage />} />
         </Routes>
       )}
-      <ScoreBoard />
+      {isLoggedIn && <ScoreBoard />}
     </>
   );
 }
