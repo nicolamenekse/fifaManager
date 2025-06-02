@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'
 
 import authReducer from './auth/authSlice'
 import matchReducer from "./match/matchSlice"
+import scoreReducer from './scoreSlice'
 
 const authpersistConfig = {
     key: "auth",
@@ -20,7 +21,8 @@ const matchPersistConfig = {
 
 const rootReducer = combineReducers({
     auth: persistReducer(authpersistConfig, authReducer),
-    match:persistReducer(matchPersistConfig, matchReducer )
+    match:persistReducer(matchPersistConfig, matchReducer ),
+    scores: scoreReducer
 })
 
 export const store = configureStore({

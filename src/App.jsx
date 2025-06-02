@@ -11,6 +11,7 @@ import LoginPage from "./pages/Loginpage/LoginPage";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MatchPage from "./pages/Matchpage/MatchPage";
+import ScoreBoard from './components/ScoreBoard';
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ function App() {
           <Route path="*" element={<HomePage />} />
         </Routes>
       )}
+      <ScoreBoard />
     </>
   );
 }
