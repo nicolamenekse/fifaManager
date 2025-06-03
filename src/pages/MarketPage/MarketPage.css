@@ -1,0 +1,110 @@
+.market-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #333;
+}
+
+.user-info {
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-info h2 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.product-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.product-card p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.product-card button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.product-card button:hover:not(.disabled) {
+    background-color: #2980b9;
+}
+
+.product-card button.disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.purchase-history {
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.purchase-history h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.purchases-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.purchase-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.purchase-item span:first-child {
+    font-size: 1.5rem;
+}
+
+.purchase-item span:last-child {
+    color: #666;
+    margin-left: auto;
+} 
