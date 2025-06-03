@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/authSelectors';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { addPoints } from '../../redux/scoreSlice';
 import './MarketPage.css';
 
 const MarketPage = () => {
-    const user = useSelector(selectUser);
     const navigate = useNavigate();
-    const [points, setPoints] = useState(0);
-    const [purchases, setPurchases] = useState([]);
+    const dispatch = useDispatch();
+    const scores = useSelector((state) => state.scores.players);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [purchases, setPurchases] = useState([]);
 
     const users = [
         { id: 1, name: 'Emin', email: 'emin@example.com' },
@@ -25,19 +25,8 @@ const MarketPage = () => {
     ];
 
     useEffect(() => {
-        // LocalStorage'dan puanları ve alışverişleri yükle
         if (selectedUser) {
-            const savedPoints = localStorage.getItem(`userPoints_${selectedUser.email}`);
             const savedPurchases = localStorage.getItem(`userPurchases_${selectedUser.email}`);
-            
-            if (savedPoints) {
-                setPoints(parseInt(savedPoints));
-            } else {
-                // İlk girişte 1000 puan ver
-                setPoints(1000);
-                localStorage.setItem(`userPoints_${selectedUser.email}`, '1000');
-            }
-
             if (savedPurchases) {
                 setPurchases(JSON.parse(savedPurchases));
             } else {
@@ -52,18 +41,18 @@ const MarketPage = () => {
             return;
         }
 
-        if (points >= product.price) {
-            const newPoints = points - product.price;
+        const userScore = scores[selectedUser.name] || 0;
+
+        if (userScore >= product.price) {
             const newPurchases = [...purchases, {
                 ...product,
                 purchaseDate: new Date().toISOString()
             }];
 
-            setPoints(newPoints);
             setPurchases(newPurchases);
+            dispatch(addPoints({ player: selectedUser.name, points: -product.price }));
 
             // LocalStorage'a kaydet
-            localStorage.setItem(`userPoints_${selectedUser.email}`, newPoints.toString());
             localStorage.setItem(`userPurchases_${selectedUser.email}`, JSON.stringify(newPurchases));
 
             alert(`${product.name} başarıyla satın alındı!`);
@@ -73,14 +62,12 @@ const MarketPage = () => {
     };
 
     const handleLogout = () => {
-        // Çıkış işlemleri burada yapılacak
         navigate('/');
     };
 
     const toggleUserSelection = (user) => {
         if (selectedUser?.id === user.id) {
             setSelectedUser(null);
-            setPoints(0);
             setPurchases([]);
         } else {
             setSelectedUser(user);
@@ -104,7 +91,7 @@ const MarketPage = () => {
                             onClick={() => toggleUserSelection(user)}
                         >
                             <h3>{user.name}</h3>
-                            <p>Puan: {localStorage.getItem(`userPoints_${user.email}`) || 1000}</p>
+                            <p>Puan: {scores[user.name] || 0}</p>
                         </div>
                     ))}
                 </div>
@@ -114,7 +101,7 @@ const MarketPage = () => {
                 <>
                     <div className="user-info">
                         <h2>Seçili Kullanıcı: {selectedUser.name}</h2>
-                        <p>Mevcut Puanınız: {points}</p>
+                        <p>Mevcut Puanınız: {scores[selectedUser.name] || 0}</p>
                     </div>
 
                     <div className="products-grid">
@@ -125,8 +112,8 @@ const MarketPage = () => {
                                 <p>{product.price} Puan</p>
                                 <button 
                                     onClick={() => handlePurchase(product)}
-                                    disabled={points < product.price}
-                                    className={points < product.price ? 'disabled' : ''}
+                                    disabled={(scores[selectedUser.name] || 0) < product.price}
+                                    className={(scores[selectedUser.name] || 0) < product.price ? 'disabled' : ''}
                                 >
                                     Satın Al
                                 </button>
