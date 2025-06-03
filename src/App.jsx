@@ -12,6 +12,7 @@ import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MatchPage from "./pages/Matchpage/MatchPage";
 import ScoreBoard from './components/ScoreBoard';
+import MarketPage from "./pages/MarketPage/MarketPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,10 @@ function App() {
           <Route
             path="/match"
             element={<PrivateRoute redirectTo="/" element={<MatchPage />} />}
+          />
+          <Route
+            path="/market"
+            element={<PrivateRoute redirectTo="/" element={<MarketPage />} />}
           />
           <Route path="*" element={<HomePage />} />
         </Routes>
