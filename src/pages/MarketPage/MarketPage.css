@@ -1,162 +1,213 @@
+/* FIFA 2007 Nostalgic Theme */
+:root {
+    --fifa-blue: #003366;
+    --fifa-light-blue: #0066cc;
+    --fifa-white: #ffffff;
+    --fifa-gray: #f0f0f0;
+    --fifa-dark-gray: #333333;
+}
+
 .market-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
-    color: #333;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--fifa-blue), #001a33);
+    min-height: 100vh;
+    color: var(--fifa-white);
+    font-family: 'Arial', sans-serif;
 }
 
 .market-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: 2px solid var(--fifa-light-blue);
+}
+
+.market-header h1 {
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: var(--fifa-white);
 }
 
 .logout-button {
-    background-color: #e74c3c;
-    color: white;
+    background: var(--fifa-light-blue);
+    color: var(--fifa-white);
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 .logout-button:hover {
-    background-color: #c0392b;
+    background: #004d99;
+    transform: scale(1.05);
 }
 
 .users-section {
-    margin-bottom: 2rem;
+    margin-bottom: 30px;
+}
+
+.users-section h2 {
+    color: var(--fifa-white);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    text-transform: uppercase;
 }
 
 .users-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 20px;
+    padding: 20px;
 }
 
 .user-card {
-    background-color: #f5f5f5;
-    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
     border-radius: 8px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .user-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .user-card.selected {
-    background-color: #3498db;
-    color: white;
+    border-color: var(--fifa-light-blue);
+    background: rgba(0, 102, 204, 0.2);
+}
+
+.user-card h3 {
+    color: var(--fifa-white);
+    margin-bottom: 10px;
 }
 
 .user-info {
-    background-color: #f5f5f5;
-    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
     border-radius: 8px;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.user-info h2 {
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 2px solid var(--fifa-light-blue);
 }
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
 .product-card {
-    background-color: white;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
     border-radius: 8px;
-    padding: 1.5rem;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .product-image {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3em;
+    margin-bottom: 10px;
 }
 
 .product-card h3 {
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-}
-
-.product-card p {
-    color: #666;
-    margin-bottom: 1rem;
+    color: var(--fifa-white);
+    margin-bottom: 10px;
 }
 
 .product-card button {
-    background-color: #3498db;
-    color: white;
+    background: var(--fifa-light-blue);
+    color: var(--fifa-white);
     border: none;
-    padding: 0.8rem 1.5rem;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .product-card button:hover:not(.disabled) {
-    background-color: #2980b9;
+    background: #004d99;
+    transform: scale(1.05);
 }
 
 .product-card button.disabled {
-    background-color: #bdc3c7;
+    background: #666;
     cursor: not-allowed;
+    opacity: 0.7;
 }
 
 .purchase-history {
-    background-color: #f5f5f5;
-    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    border: 2px solid var(--fifa-light-blue);
 }
 
 .purchase-history h2 {
-    color: #2c3e50;
-    margin-bottom: 1rem;
+    color: var(--fifa-white);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    text-transform: uppercase;
 }
 
 .purchases-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    gap: 10px;
 }
 
 .purchase-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background-color: white;
-    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.purchase-item span:first-child {
-    font-size: 1.5rem;
+.purchase-item span {
+    color: var(--fifa-white);
 }
 
-.purchase-item span:last-child {
-    color: #666;
-    margin-left: auto;
+/* Retro FIFA 2007 Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fifa-blue);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--fifa-light-blue);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #004d99;
 } 
