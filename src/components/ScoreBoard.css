@@ -1,77 +1,87 @@
 .score-board {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #1a1a1a;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+  border: 2px solid #ffd700;
+  border-radius: 8px;
+  padding: 20px;
   color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  max-width: 600px;
+  margin: 20px auto;
 }
 
 .score-board h2 {
   text-align: center;
-  color: #ffffff;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
+  color: #ffd700;
+  font-size: 28px;
   text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
   letter-spacing: 1px;
 }
 
 .player-score {
-  background-color: #2a2a2a;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s;
 }
 
 .player-score:hover {
-  transform: translateY(-2px);
+  transform: scale(1.02);
+  border-color: #ffd700;
 }
 
 .player-score h3 {
+  color: #ffd700;
+  font-size: 20px;
   margin: 0;
-  color: #ffffff;
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
+  flex: 1;
 }
 
 .score {
-  font-size: 2.5rem;
+  background: #000;
+  color: #00ff00;
+  font-size: 24px;
   font-weight: bold;
-  color: #4CAF50;
-  margin: 0.5rem 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 5px 15px;
+  border-radius: 4px;
+  margin: 0 15px;
+  min-width: 60px;
+  text-align: center;
+  border: 1px solid #444;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
 .buttons {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 10px;
 }
 
 .buttons button {
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #4CAF50;
-  color: white;
+  background: linear-gradient(to bottom, #444, #333);
+  color: #ffffff;
+  border: 1px solid #666;
+  border-radius: 4px;
+  padding: 8px 15px;
+  font-size: 16px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  flex: 1;
+  transition: all 0.2s;
 }
 
 .buttons button:hover {
-  background-color: #45a049;
+  background: linear-gradient(to bottom, #ffd700, #ffa500);
+  color: #000;
+  border-color: #ffd700;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .buttons button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 } 
