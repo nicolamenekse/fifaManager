@@ -65,6 +65,10 @@ const MarketPage = () => {
         navigate('/');
     };
 
+    const handleNavigateToMatch = () => {
+        navigate('/match');
+    };
+
     const toggleUserSelection = (user) => {
         if (selectedUser?.id === user.id) {
             setSelectedUser(null);
@@ -77,8 +81,12 @@ const MarketPage = () => {
     return (
         <div className="market-container">
             <div className="market-header">
-                <h1>Market</h1>
-                <button onClick={handleLogout} className="logout-button">Çıkış Yap</button>
+            
+                <h1>Ezbanido Marketi</h1>
+                <div className="header-buttons">
+                    <button onClick={handleNavigateToMatch} className="match-button">Maç Sayfası</button>
+                    <button onClick={handleLogout} className="logout-button">Çıkış Yap</button>
+                </div>
             </div>
 
             <div className="users-section">

@@ -21,11 +21,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    margin-bottom: 30px;
-    border: 2px solid var(--fifa-light-blue);
+    padding: 1rem;
+    background-color: #f8f9fa;
+    margin-bottom: 2rem;
 }
 
 .market-header h1 {
@@ -36,20 +34,36 @@
     color: var(--fifa-white);
 }
 
-.logout-button {
-    background: var(--fifa-light-blue);
-    color: var(--fifa-white);
+.header-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.match-button, .logout-button {
+    padding: 0.5rem 1rem;
     border: none;
-    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.match-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.match-button:hover {
+    background-color: #218838;
+}
+
+.logout-button {
+    background-color: #dc3545;
+    color: white;
 }
 
 .logout-button:hover {
-    background: #004d99;
-    transform: scale(1.05);
+    background-color: #c82333;
 }
 
 .users-section {
