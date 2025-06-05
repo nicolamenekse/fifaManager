@@ -1,6 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { selectItems } from "../../redux/match/matchSelectors";
 import {addMatch, deleteMatch} from '../../redux/match/matchOperations'
 import { fetchAllMatch } from "../../redux/match/matchOperations";
@@ -9,6 +10,7 @@ import styles from "./Matchpage.module.css";
 
 export default function MatchPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const items = useSelector(selectItems)
   
   const initialValues = {
@@ -37,6 +39,11 @@ export default function MatchPage() {
   const deleteClick = (id)=>{
     dispatch(deleteMatch(id))
   }
+
+  const goToMarket = () => {
+    navigate('/market');
+  };
+
   return (
     <div className={styles.container}>
       <Formik initialValues={initialValues} onSubmit={handleAddMatch} >
@@ -80,9 +87,14 @@ export default function MatchPage() {
         ))}
       </div>
       
-      <button className={styles.exitButton} onClick={exitClick}>
-        Çıkış yap
-      </button>
+      <div className={styles.buttonContainer}>
+        <button className={styles.marketButton} onClick={goToMarket}>
+          Market
+        </button>
+        <button className={styles.exitButton} onClick={exitClick}>
+          Çıkış yap
+        </button>
+      </div>
     </div>
   );
 }
