@@ -8,12 +8,10 @@
 }
 
 .market-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background: linear-gradient(135deg, var(--fifa-blue), #001a33);
     min-height: 100vh;
-    color: var(--fifa-white);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    color: #ffffff;
+    padding: 2rem;
     font-family: 'Arial', sans-serif;
 }
 
@@ -21,17 +19,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    background-color: #f8f9fa;
     margin-bottom: 2rem;
+    padding: 1rem;
+    background: linear-gradient(90deg, #0056b3 0%, #003366 100%);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .market-header h1 {
-    font-size: 2.5em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    color: var(--fifa-white);
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ffffff, #a8c6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
 }
 
 .header-buttons {
@@ -39,57 +40,49 @@
     gap: 1rem;
 }
 
-.match-button, .logout-button {
-    padding: 0.5rem 1rem;
+.header-buttons button {
+    padding: 0.8rem 1.5rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
 }
 
 .match-button {
-    background-color: #28a745;
+    background: linear-gradient(90deg, #00a8ff 0%, #0077ff 100%);
     color: white;
-}
-
-.match-button:hover {
-    background-color: #218838;
 }
 
 .logout-button {
-    background-color: #dc3545;
+    background: linear-gradient(90deg, #ff4757 0%, #ff6b81 100%);
     color: white;
 }
 
-.logout-button:hover {
-    background-color: #c82333;
+.header-buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .users-section {
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
 }
 
 .users-section h2 {
-    color: var(--fifa-white);
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.8em;
-    text-transform: uppercase;
+    color: #00a8ff;
+    margin-bottom: 1rem;
 }
 
 .users-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    gap: 1rem;
 }
 
 .user-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid transparent;
@@ -97,115 +90,132 @@
 
 .user-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .user-card.selected {
-    border-color: var(--fifa-light-blue);
-    background: rgba(0, 102, 204, 0.2);
+    border-color: #00a8ff;
+    background: linear-gradient(135deg, #003366 0%, #002244 100%);
 }
 
 .user-card h3 {
-    color: var(--fifa-white);
-    margin-bottom: 10px;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+}
+
+.user-card p {
+    color: #00a8ff;
+    margin: 0;
+    font-weight: bold;
 }
 
 .user-info {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    text-align: center;
-    border: 2px solid var(--fifa-light-blue);
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.user-info h2 {
+    color: #00a8ff;
+    margin: 0 0 0.5rem 0;
 }
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .product-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
     text-align: center;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .product-image {
-    font-size: 3em;
-    margin-bottom: 10px;
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
 .product-card h3 {
-    color: var(--fifa-white);
-    margin-bottom: 10px;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+}
+
+.product-card p {
+    color: #00a8ff;
+    font-weight: bold;
+    margin: 0 0 1rem 0;
 }
 
 .product-card button {
-    background: var(--fifa-light-blue);
-    color: var(--fifa-white);
+    background: linear-gradient(90deg, #00a8ff 0%, #0077ff 100%);
+    color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
     transition: all 0.3s ease;
     width: 100%;
-    margin-top: 10px;
 }
 
 .product-card button:hover:not(.disabled) {
-    background: #004d99;
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .product-card button.disabled {
-    background: #666;
+    background: linear-gradient(90deg, #666666 0%, #444444 100%);
     cursor: not-allowed;
     opacity: 0.7;
 }
 
 .purchase-history {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 30px;
-    border: 2px solid var(--fifa-light-blue);
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
 }
 
 .purchase-history h2 {
-    color: var(--fifa-white);
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.8em;
-    text-transform: uppercase;
+    color: #00a8ff;
+    margin-bottom: 1rem;
 }
 
 .purchases-list {
-    display: grid;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .purchase-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 4px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
 }
 
-.purchase-item span {
-    color: var(--fifa-white);
+.purchase-item span:first-child {
+    font-size: 1.5rem;
+}
+
+.purchase-item span:nth-child(2) {
+    flex: 1;
+    color: #ffffff;
+}
+
+.purchase-item span:last-child {
+    color: #00a8ff;
 }
 
 /* Retro FIFA 2007 Scrollbar */
