@@ -1,87 +1,144 @@
 .score-board {
-  background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
-  border: 2px solid #ffd700;
-  border-radius: 8px;
-  padding: 20px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  border: 2px solid #00a8ff;
+  border-radius: 12px;
+  padding: 25px;
   color: #ffffff;
-  font-family: 'Arial', sans-serif;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-  max-width: 600px;
+  font-family: 'Rajdhani', 'Arial', sans-serif;
+  box-shadow: 0 0 20px rgba(0, 168, 255, 0.2);
+  max-width: 800px;
   margin: 20px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.score-board::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00a8ff, #0097e6, #00a8ff);
+  animation: gradientMove 3s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 .score-board h2 {
   text-align: center;
-  color: #ffd700;
-  font-size: 28px;
+  color: #00a8ff;
+  font-size: 32px;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-weight: bold;
-  letter-spacing: 1px;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.score-board h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00a8ff, transparent);
 }
 
 .player-score {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid #444;
-  border-radius: 6px;
-  padding: 15px;
-  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 168, 255, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+}
+
+.player-score::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #00a8ff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .player-score:hover {
-  transform: scale(1.02);
-  border-color: #ffd700;
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #00a8ff;
+}
+
+.player-score:hover::before {
+  opacity: 1;
 }
 
 .player-score h3 {
-  color: #ffd700;
-  font-size: 20px;
+  color: #ffffff;
+  font-size: 24px;
   margin: 0;
   flex: 1;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 168, 255, 0.3);
 }
 
 .score {
-  background: #000;
-  color: #00ff00;
-  font-size: 24px;
+  background: linear-gradient(135deg, #00a8ff 0%, #0097e6 100%);
+  color: #ffffff;
+  font-size: 28px;
   font-weight: bold;
-  padding: 5px 15px;
-  border-radius: 4px;
-  margin: 0 15px;
-  min-width: 60px;
+  padding: 8px 20px;
+  border-radius: 6px;
+  margin: 0 20px;
+  min-width: 80px;
   text-align: center;
-  border: 1px solid #444;
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+  border: none;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 168, 255, 0.2);
 }
 
 .buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .buttons button {
-  background: linear-gradient(to bottom, #444, #333);
+  background: linear-gradient(135deg, #00a8ff 0%, #0097e6 100%);
   color: #ffffff;
-  border: 1px solid #666;
-  border-radius: 4px;
-  padding: 8px 15px;
-  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 168, 255, 0.2);
 }
 
 .buttons button:hover {
-  background: linear-gradient(to bottom, #ffd700, #ffa500);
-  color: #000;
-  border-color: #ffd700;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 168, 255, 0.3);
+  background: linear-gradient(135deg, #0097e6 0%, #00a8ff 100%);
 }
 
 .buttons button:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(0, 168, 255, 0.2);
 } 
