@@ -1,18 +1,26 @@
-/* FIFA 2007 Nostalgic Theme */
+/* Modern Football Club Theme */
 :root {
-    --fifa-blue: #003366;
-    --fifa-light-blue: #0066cc;
-    --fifa-white: #ffffff;
-    --fifa-gray: #f0f0f0;
-    --fifa-dark-gray: #333333;
+    --pitch-green: #2d8f2d;
+    --dark-green: #1a5c1a;
+    --light-green: #4fb34f;
+    --football-white: #ffffff;
+    --football-black: #1a1a1a;
+    --accent-gold: #ffd700;
+    --shadow-light: rgba(45, 143, 45, 0.1);
+    --shadow-medium: rgba(45, 143, 45, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
 }
 
 .market-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-    color: #ffffff;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background-image: 
+        linear-gradient(90deg, rgba(45, 143, 45, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(45, 143, 45, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: var(--football-black);
     padding: 2rem;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .market-header {
@@ -20,48 +28,75 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
-    padding: 1rem;
-    background: linear-gradient(90deg, #0056b3 0%, #003366 100%);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--pitch-green) 0%, var(--dark-green) 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.market-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.1;
 }
 
 .market-header h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    background: linear-gradient(90deg, #ffffff, #a8c6ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--football-white);
     margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 1;
 }
 
 .header-buttons {
     display: flex;
     gap: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 .header-buttons button {
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 2rem;
     border: none;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .match-button {
-    background: linear-gradient(90deg, #00a8ff 0%, #0077ff 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--football-white) 0%, #f8f9fa 100%);
+    color: var(--pitch-green);
+    border: 2px solid transparent;
 }
 
 .logout-button {
-    background: linear-gradient(90deg, #ff4757 0%, #ff6b81 100%);
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
     color: white;
+    border: 2px solid transparent;
 }
 
 .header-buttons button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.match-button:hover {
+    background: var(--football-white);
+    border-color: var(--pitch-green);
 }
 
 .users-section {
@@ -69,169 +104,238 @@
 }
 
 .users-section h2 {
-    color: #00a8ff;
-    margin-bottom: 1rem;
+    color: var(--pitch-green);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .users-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
 .user-card {
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    padding: 1.5rem;
-    border-radius: 10px;
+    background: var(--football-white);
+    padding: 2rem;
+    border-radius: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid #e9ecef;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .user-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px 35px var(--shadow-medium);
+    border-color: var(--light-green);
 }
 
 .user-card.selected {
-    border-color: #00a8ff;
-    background: linear-gradient(135deg, #003366 0%, #002244 100%);
+    border-color: var(--pitch-green);
+    background: linear-gradient(135deg, var(--football-white) 0%, #f0f8f0 100%);
+    box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
 .user-card h3 {
-    color: #ffffff;
+    color: var(--football-black);
     margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .user-card p {
-    color: #00a8ff;
+    color: var(--pitch-green);
     margin: 0;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
 .user-info {
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    padding: 1.5rem;
-    border-radius: 10px;
+    background: var(--football-white);
+    padding: 2rem;
+    border-radius: 16px;
     margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e9ecef;
 }
 
 .user-info h2 {
-    color: #00a8ff;
+    color: var(--pitch-green);
     margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     margin-bottom: 2rem;
 }
 
 .product-card {
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    padding: 1.5rem;
-    border-radius: 10px;
+    background: var(--football-white);
+    padding: 2rem;
+    border-radius: 16px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e9ecef;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--light-green);
 }
 
 .product-image {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .product-card h3 {
-    color: #ffffff;
-    margin: 0 0 0.5rem 0;
+    color: var(--football-black);
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .product-card p {
-    color: #00a8ff;
-    font-weight: bold;
-    margin: 0 0 1rem 0;
+    color: var(--pitch-green);
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.2rem;
 }
 
 .product-card button {
-    background: linear-gradient(90deg, #00a8ff 0%, #0077ff 100%);
+    background: linear-gradient(135deg, var(--pitch-green) 0%, var(--dark-green) 100%);
     color: white;
     border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
+    padding: 1rem 2rem;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .product-card button:hover:not(.disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    background: linear-gradient(135deg, var(--light-green) 0%, var(--pitch-green) 100%);
 }
 
 .product-card button.disabled {
-    background: linear-gradient(90deg, #666666 0%, #444444 100%);
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 .purchase-history {
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    padding: 1.5rem;
-    border-radius: 10px;
+    background: var(--football-white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e9ecef;
 }
 
 .purchase-history h2 {
-    color: #00a8ff;
-    margin-bottom: 1rem;
+    color: var(--pitch-green);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .purchases-list {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 .purchase-item {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.8rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 5px;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+}
+
+.purchase-item:hover {
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    border-color: var(--light-green);
 }
 
 .purchase-item span:first-child {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .purchase-item span:nth-child(2) {
     flex: 1;
-    color: #ffffff;
+    color: var(--football-black);
+    font-weight: 500;
 }
 
 .purchase-item span:last-child {
-    color: #00a8ff;
+    color: var(--pitch-green);
+    font-weight: 600;
 }
 
-/* Retro FIFA 2007 Scrollbar */
+/* Modern Football Scrollbar */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--fifa-blue);
+    background: #f8f9fa;
+    border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--fifa-light-blue);
-    border-radius: 5px;
+    background: linear-gradient(135deg, var(--pitch-green) 0%, var(--dark-green) 100%);
+    border-radius: 6px;
+    border: 2px solid #f8f9fa;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #004d99;
+    background: linear-gradient(135deg, var(--light-green) 0%, var(--pitch-green) 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .market-container {
+        padding: 1rem;
+    }
+    
+    .market-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .market-header h1 {
+        font-size: 2rem;
+    }
+    
+    .header-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .users-grid {
+        grid-template-columns: 1fr;
+    }
 } 

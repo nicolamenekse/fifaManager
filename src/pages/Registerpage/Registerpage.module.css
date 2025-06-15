@@ -1,83 +1,287 @@
+/* Modern Football Club Registration Theme */
+:root {
+  --pitch-green: #2d8f2d;
+  --dark-green: #1a5c1a;
+  --light-green: #4fb34f;
+  --football-white: #ffffff;
+  --football-black: #1a1a1a;
+  --accent-gold: #ffd700;
+  --input-gray: #f8f9fa;
+  --border-light: #e9ecef;
+  --success-green: #28a745;
+  --error-red: #dc3545;
+  --shadow-light: rgba(45, 143, 45, 0.1);
+  --shadow-medium: rgba(45, 143, 45, 0.2);
+  --shadow-dark: rgba(0, 0, 0, 0.1);
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background-image: 
+    linear-gradient(90deg, rgba(45, 143, 45, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(45, 143, 45, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232d8f2d' fill-opacity='0.02'%3E%3Cpath d='M50 50m-40 0a40,40 0 1,1 80,0a40,40 0 1,1 -80,0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.3;
+  z-index: 0;
 }
 
 .form {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 30px;
-  border-radius: 10px;
-  border: 2px solid #ffd700;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  background: var(--football-white);
+  padding: 3rem;
+  border-radius: 20px;
+  border: 2px solid var(--border-light);
+  box-shadow: 0 15px 35px var(--shadow-dark);
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+}
+
+.form::before {
+  content: '⚽';
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  background: var(--pitch-green);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px var(--shadow-medium);
+}
+
+.form h2 {
+  text-align: center;
+  color: var(--football-black);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0 2rem 0;
+  letter-spacing: -0.5px;
+}
+
+.form h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pitch-green), var(--light-green));
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
 }
 
 .input {
   width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  background: #2a2a2a;
-  border: 1px solid #ffd700;
-  border-radius: 5px;
-  color: #ffffff;
-  font-family: 'Arial', sans-serif;
-  font-size: 16px;
+  padding: 1rem 1.2rem;
+  margin: 0.5rem 0 1rem 0;
+  background: var(--input-gray);
+  border: 2px solid var(--border-light);
+  border-radius: 12px;
+  color: var(--football-black);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #6c757d;
+  font-weight: 400;
 }
 
 .input:focus {
   outline: none;
-  border-color: #ff6b6b;
-  box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+  border-color: var(--pitch-green);
+  background: var(--football-white);
+  box-shadow: 0 0 0 3px var(--shadow-light);
+  transform: translateY(-1px);
+}
+
+.input:hover:not(:focus) {
+  border-color: var(--light-green);
+  background: var(--football-white);
 }
 
 .submitButton {
   width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-  background: linear-gradient(to bottom, #ffd700, #ff8c00);
+  padding: 1.2rem;
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, var(--pitch-green) 0%, var(--dark-green) 100%);
   border: none;
-  border-radius: 5px;
-  color: #000000;
-  font-weight: bold;
-  font-size: 16px;
+  border-radius: 12px;
+  color: var(--football-white);
+  font-weight: 700;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.2s;
 }
 
 .submitButton:hover {
-  transform: scale(1.05);
-  background: linear-gradient(to bottom, #ff8c00, #ffd700);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-medium);
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--pitch-green) 100%);
+}
+
+.submitButton:hover::before {
+  left: 100%;
+}
+
+.submitButton:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px var(--shadow-medium);
 }
 
 .links {
-  margin-top: 20px;
+  margin-top: 2rem;
   display: flex;
-  gap: 20px;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
 }
 
 .link {
-  color: #ffd700;
+  color: var(--pitch-green);
   text-decoration: none;
-  font-size: 16px;
-  padding: 8px 16px;
-  border: 1px solid #ffd700;
-  border-radius: 5px;
-  transition: all 0.3s;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--pitch-green);
+  border-radius: 12px;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  text-align: center;
+  min-width: 120px;
+  cursor: pointer;
+  display: inline-block;
+  pointer-events: auto;
 }
 
 .link:hover {
-  background: #ffd700;
-  color: #000000;
+  background: var(--pitch-green);
+  color: var(--football-white);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--shadow-light);
 }
 
 .error {
-  color: #ff6b6b;
-  font-size: 14px;
-  margin-top: 5px;
+  color: var(--error-red);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0.25rem 0 0.5rem 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.error::before {
+  content: '⚠️';
+  font-size: 0.75rem;
+}
+
+.success {
+  color: var(--success-green);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0.25rem 0 0.5rem 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.success::before {
+  content: '✅';
+  font-size: 0.75rem;
+}
+
+/* Loading State */
+.submitButton:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submitButton:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .form {
+    padding: 2rem;
+    max-width: 100%;
+  }
+  
+  .form h2 {
+    font-size: 1.75rem;
+  }
+  
+  .input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .links {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .link {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .form h2 {
+    font-size: 1.5rem;
+  }
 }
