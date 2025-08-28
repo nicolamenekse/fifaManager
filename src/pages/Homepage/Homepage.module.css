@@ -1,19 +1,8 @@
 /* FIFA 2007 Theme Colors */
-:root {
-  --fifa-green: #1a472a;
-  --fifa-green-light: #2d8a4a;
-  --fifa-green-dark: #0f2e1a;
-  --fifa-gold: #d4af37;
-  --fifa-gold-light: #f4d03f;
-  --fifa-black: #0a0a0a;
-  --fifa-gray: #2c2c2c;
-  --fifa-white: #ffffff;
-  --fifa-red: #c0392b;
-}
 
 .homeContainer {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--fifa-black) 0%, var(--fifa-green-dark) 50%, var(--fifa-black) 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #0f2e1a 50%, #0a0a0a 100%);
   position: relative;
   overflow: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -45,7 +34,7 @@
   padding: 2rem 4rem;
   background: linear-gradient(90deg, rgba(10, 10, 10, 0.9), rgba(26, 71, 42, 0.9));
   backdrop-filter: blur(10px);
-  border-bottom: 2px solid var(--fifa-gold);
+  border-bottom: 2px solid #d4af37;
 }
 
 .logoSection {
@@ -63,7 +52,7 @@
 .fifaText {
   font-size: 3rem;
   font-weight: 900;
-  color: var(--fifa-white);
+  color: #ffffff;
   letter-spacing: 8px;
   text-transform: uppercase;
   line-height: 1;
@@ -72,7 +61,7 @@
 .managerText {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--fifa-gold);
+  color: #d4af37;
   letter-spacing: 4px;
   text-transform: uppercase;
   margin-top: -0.5rem;
@@ -81,7 +70,7 @@
 .yearText {
   font-size: 2rem;
   font-weight: 800;
-  color: var(--fifa-green-light);
+  color: #2d8a4a;
   letter-spacing: 2px;
   margin-top: -0.3rem;
 }
@@ -93,20 +82,20 @@
 
 .timeDisplay {
   text-align: center;
-  color: var(--fifa-white);
+  color: #ffffff;
 }
 
 .time {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--fifa-gold);
+  color: #d4af37;
   font-family: 'Courier New', monospace;
   text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .date {
   font-size: 1rem;
-  color: var(--fifa-white);
+  color: #ffffff;
   margin-top: 0.5rem;
   opacity: 0.8;
 }
@@ -140,7 +129,7 @@
 
 .welcomeText {
   font-size: 2rem;
-  color: var(--fifa-gold);
+  color: #d4af37;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -148,12 +137,12 @@
 
 .gameTitle {
   font-size: 4.5rem;
-  color: var(--fifa-white);
+  color: #ffffff;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 4px;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
-  background: linear-gradient(45deg, var(--fifa-white), var(--fifa-gold));
+  background: linear-gradient(45deg, #ffffff, #d4af37);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -161,7 +150,7 @@
 
 .tagline {
   font-size: 1.5rem;
-  color: var(--fifa-green-light);
+  color: #2d8a4a;
   font-weight: 500;
   letter-spacing: 1px;
 }
@@ -179,7 +168,7 @@
 
 .featureCard {
   background: linear-gradient(145deg, rgba(26, 71, 42, 0.8), rgba(45, 138, 74, 0.8));
-  border: 2px solid var(--fifa-gold);
+  border: 2px solid #d4af37;
   border-radius: 15px;
   padding: 2rem;
   text-align: center;
@@ -207,7 +196,7 @@
 .featureCard:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border-color: var(--fifa-gold-light);
+  border-color: #f4d03f;
 }
 
 .featureIcon {
@@ -217,7 +206,7 @@
 }
 
 .featureCard h3 {
-  color: var(--fifa-white);
+  color: #ffffff;
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -226,7 +215,7 @@
 }
 
 .featureCard p {
-  color: var(--fifa-white);
+  color: #ffffff;
   font-size: 1rem;
   line-height: 1.6;
   opacity: 0.9;
@@ -253,7 +242,7 @@
   font-size: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--fifa-white);
+  color: #ffffff;
   text-decoration: none;
   border-radius: 50px;
   cursor: pointer;
@@ -292,46 +281,46 @@
 
 /* Button Variants */
 .registerBtn {
-  background: linear-gradient(45deg, var(--fifa-green), var(--fifa-green-light));
-  border-color: var(--fifa-gold);
+  background: linear-gradient(45deg, #1a472a, #2d8a4a);
+  border-color: #d4af37;
 }
 
 .registerBtn:hover {
-  background: linear-gradient(45deg, var(--fifa-green-light), var(--fifa-green));
+  background: linear-gradient(45deg, #2d8a4a, #1a472a);
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(45, 138, 74, 0.4);
 }
 
 .loginBtn {
-  background: linear-gradient(45deg, var(--fifa-gold), var(--fifa-gold-light));
-  border-color: var(--fifa-gold);
-  color: var(--fifa-black);
+  background: linear-gradient(45deg, #d4af37, #f4d03f);
+  border-color: #d4af37;
+  color: #0a0a0a;
 }
 
 .loginBtn:hover {
-  background: linear-gradient(45deg, var(--fifa-gold-light), var(--fifa-gold));
+  background: linear-gradient(45deg, #f4d03f, #d4af37);
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
 }
 
 .matchBtn {
-  background: linear-gradient(45deg, var(--fifa-red), #e74c3c);
-  border-color: var(--fifa-gold);
+  background: linear-gradient(45deg, #c0392b, #e74c3c);
+  border-color: #d4af37;
 }
 
 .matchBtn:hover {
-  background: linear-gradient(45deg, #e74c3c, var(--fifa-red));
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(231, 76, 60, 0.4);
 }
 
 .marketBtn {
-  background: linear-gradient(45deg, var(--fifa-green-light), var(--fifa-green));
-  border-color: var(--fifa-gold);
+  background: linear-gradient(45deg, #2d8a4a, #1a472a);
+  border-color: #d4af37;
 }
 
 .marketBtn:hover {
-  background: linear-gradient(45deg, var(--fifa-green), var(--fifa-green-light));
+  background: linear-gradient(45deg, #1a472a, #2d8a4a);
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(45, 138, 74, 0.4);
 }
@@ -342,7 +331,7 @@
   z-index: 10;
   background: linear-gradient(90deg, rgba(10, 10, 10, 0.9), rgba(26, 71, 42, 0.9));
   backdrop-filter: blur(10px);
-  border-top: 2px solid var(--fifa-gold);
+  border-top: 2px solid #d4af37;
   padding: 2rem;
   margin-top: auto;
 }
@@ -358,7 +347,7 @@
 }
 
 .footerContent p {
-  color: var(--fifa-white);
+  color: #ffffff;
   font-size: 0.9rem;
   opacity: 0.8;
 }
@@ -369,14 +358,14 @@
 }
 
 .footerLinks span {
-  color: var(--fifa-gold);
+  color: #d4af37;
   cursor: pointer;
   transition: color 0.3s ease;
   font-size: 0.9rem;
 }
 
 .footerLinks span:hover {
-  color: var(--fifa-gold-light);
+  color: #f4d03f;
 }
 
 /* Floating Elements */
