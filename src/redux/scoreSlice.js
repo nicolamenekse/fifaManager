@@ -1,23 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  players: {
-    'Emin': 0,
-    'Mehmet': 0,
-    'İrfan': 0
-  }
+  players: {}   // başlangıçta boş — ScoreBoard'dan eklenir
 };
 
 export const scoreSlice = createSlice({
   name: 'scores',
   initialState,
   reducers: {
+    addPlayer: (state, action) => {
+      const name = action.payload;
+      if (!state.players.hasOwnProperty(name)) {
+        state.players[name] = 0;
+      }
+    },
+    removePlayer: (state, action) => {
+      delete state.players[action.payload];
+    },
     addPoints: (state, action) => {
       const { player, points } = action.payload;
-      state.players[player] += points;
-    }
-  }
+      if (state.players.hasOwnProperty(player)) {
+        state.players[player] += points;
+      }
+    },
+  },
 });
 
-export const { addPoints } = scoreSlice.actions;
-export default scoreSlice.reducer; 
+export const { addPlayer, removePlayer, addPoints } = scoreSlice.actions;
+export default scoreSlice.reducer;

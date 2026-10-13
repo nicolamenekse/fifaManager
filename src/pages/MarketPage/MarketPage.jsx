@@ -12,11 +12,8 @@ const MarketPage = () => {
     const [selectedUser, setSelectedUser] = useState(null);
     const [purchases, setPurchases] = useState([]);
 
-    const users = [
-        { id: 1, name: 'Emin',   email: 'emin@example.com' },
-        { id: 2, name: 'İrfan',  email: 'irfan@example.com' },
-        { id: 3, name: 'Mehmet', email: 'mehmet@example.com' },
-    ];
+    // scoreSlice'tan dinamik kullanıcı listesi
+    const users = Object.keys(scores).map((name, idx) => ({ id: idx, name, email: name.toLowerCase() }));
 
     const products = [
         { id: 1, name: 'Çay', price: 50, image: '🍵' },
@@ -93,6 +90,11 @@ const MarketPage = () => {
 
             <div className="users-section">
                 <h2>Kullanıcılar</h2>
+                {users.length === 0 ? (
+                    <p style={{ color: '#666', fontStyle: 'italic', textAlign: 'center', padding: '20px' }}>
+                        Henüz oyuncu yok. Puan Tablosu'ndan oyuncu ekle.
+                    </p>
+                ) : (
                 <div className="users-grid">
                     {users.map((user) => (
                         <div 
@@ -105,6 +107,7 @@ const MarketPage = () => {
                         </div>
                     ))}
                 </div>
+                )}
             </div>
 
             {selectedUser && (

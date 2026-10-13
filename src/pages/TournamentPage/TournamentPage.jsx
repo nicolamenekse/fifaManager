@@ -28,7 +28,7 @@ export default function TournamentPage() {
   );
   const scorePlayers = useSelector((s) => s.scores.players);
 
-  // Başlat ekranı: oyuncu listesi (scoreSlice'tan ön doldur)
+  // Başlat ekranı: oyuncu listesi (scoreSlice'tan ön doldur, boşsa boş başla)
   const [playerList, setPlayerList] = useState(() => Object.keys(scorePlayers));
   const [nameInput, setNameInput]   = useState('');
   const [nameError, setNameError]   = useState('');
