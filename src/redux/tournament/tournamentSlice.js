@@ -86,6 +86,7 @@ const initialState = {
   rounds: [],
   standings: [],
   isGenerated: false,
+  history: [],   // geçmiş turnuvalar
 };
 
 const tournamentSlice = createSlice({
@@ -94,8 +95,8 @@ const tournamentSlice = createSlice({
   reducers: {
     generateTournament(state, action) {
       const players = action.payload; // string[]
-      state.players  = players;
-      state.rounds   = generateSchedule(players);
+      state.players   = players;
+      state.rounds    = generateSchedule(players);
       state.standings = calcStandings(players, state.rounds);
       state.isGenerated = true;
     },
@@ -112,13 +113,49 @@ const tournamentSlice = createSlice({
       state.standings = calcStandings(state.players, state.rounds);
     },
 
+    // Turnuvayı geçmişe kaydet, aktif turnuvayı temizle
+    saveTournamentToHistory(state) {
+      const totalMatches = state.rounds.reduce(
+        (acc, r) => acc + r.matches.length, 0
+      );
+      const playedMatches = state.rounds.reduce(
+        (acc, r) => acc + r.matches.filter(m => m.played).length, 0
+      );
+      state.history.unshift({           // en yenisi başa
+        id: Date.now(),
+        date: new Date().toISOString(),
+        players: [...state.players],
+        standings: [...state.standings],
+        totalMatches,
+        playedMatches,
+      });
+      // Aktif turnuvayı sıfırla ama history'yi koru
+      state.players     = [];
+      state.rounds      = [];
+      state.standings   = [];
+      state.isGenerated = false;
+    },
+
     resetTournament(state) {
-      Object.assign(state, initialState);
+      // history korunur, sadece aktif turnuva sıfırlanır
+      state.players     = [];
+      state.rounds      = [];
+      state.standings   = [];
+      state.isGenerated = false;
+    },
+
+    clearHistory(state) {
+      state.history = [];
     },
   },
 });
 
-export const { generateTournament, updateMatchScore, resetTournament } =
-  tournamentSlice.actions;
+export const {
+  generateTournament,
+  updateMatchScore,
+  saveTournamentToHistory,
+  resetTournament,
+  clearHistory,
+} = tournamentSlice.actions;
 
 export default tournamentSlice.reducer;

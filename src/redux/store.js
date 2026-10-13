@@ -29,7 +29,7 @@ const scorePersistConfig = {
 const tournamentPersistConfig = {
     key: "tournament",
     storage,
-    whitelist: ["players", "rounds", "standings", "isGenerated"]
+    whitelist: ["players", "rounds", "standings", "isGenerated", "history"]
 }
 
 const rootReducer = combineReducers({

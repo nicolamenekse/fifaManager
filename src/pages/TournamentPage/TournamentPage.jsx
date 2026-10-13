@@ -5,6 +5,8 @@ import {
   generateTournament,
   updateMatchScore,
   resetTournament,
+  saveTournamentToHistory,
+  clearHistory,
 } from '../../redux/tournament/tournamentSlice';
 import { addPoints } from '../../redux/scoreSlice';
 import styles from './TournamentPage.module.css';
@@ -21,7 +23,7 @@ export default function TournamentPage() {
   const dispatch  = useDispatch();
   const navigate  = useNavigate();
 
-  const { rounds, standings, isGenerated, players } = useSelector(
+  const { rounds, standings, isGenerated, players, history } = useSelector(
     (s) => s.tournament
   );
   const scorePlayers = useSelector((s) => s.scores.players);
@@ -33,7 +35,7 @@ export default function TournamentPage() {
 
   // Yerel skor girişleri { matchId: { home: '', away: '' } }
   const [inputs, setInputs] = useState({});
-  const [activeTab, setActiveTab] = useState('fixture'); // 'fixture' | 'standings'
+  const [activeTab, setActiveTab] = useState('fixture'); // 'fixture' | 'standings' | 'history'
 
   // ─── Oyuncu ekle ────────────────────────────────────────────────────────
   const handleAddPlayer = () => {
@@ -286,6 +288,12 @@ export default function TournamentPage() {
             >
               📊 Puan Durumu
             </button>
+            <button
+              className={`${styles.tab} ${activeTab === 'history' ? styles.activeTab : ''}`}
+              onClick={() => setActiveTab('history')}
+            >
+              📜 Geçmiş {history?.length > 0 && <span className={styles.historyBadge}>{history.length}</span>}
+            </button>
           </div>
 
           {/* FİKSTÜR */}
@@ -439,6 +447,102 @@ export default function TournamentPage() {
                   </span>
                   <span>🏆</span>
                 </div>
+              )}
+
+              {/* Tüm maçlar bittiyse "Kaydet" butonu */}
+              {playedCount === totalMatches && totalMatches > 0 && (
+                <div className={styles.finishRow}>
+                  <button
+                    className={styles.finishBtn}
+                    onClick={() => {
+                      if (window.confirm(`"${standings[0]?.player}" şampiyon olarak bu turnuvayı kaydetmek istiyor musun?`)) {
+                        dispatch(saveTournamentToHistory());
+                        setInputs({});
+                        setPlayerList(Object.keys(scorePlayers));
+                        setActiveTab('history');
+                      }
+                    }}
+                  >
+                    💾 Turnuvayı Bitir ve Kaydet
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+          {/* GEÇMİŞ */}
+          {activeTab === 'history' && (
+            <div className={styles.historySection}>
+              {!history || history.length === 0 ? (
+                <div className={styles.emptyHistory}>
+                  <span className={styles.emptyHistoryIcon}>📭</span>
+                  <p>Henüz kaydedilmiş turnuva yok.</p>
+                  <p className={styles.emptyHistoryHint}>Tüm maçları tamamlayıp "Turnuvayı Bitir ve Kaydet" butonuna bas.</p>
+                </div>
+              ) : (
+                <>
+                  <div className={styles.historyTopBar}>
+                    <span className={styles.historyCount}>{history.length} turnuva kaydedildi</span>
+                    <button
+                      className={styles.clearHistoryBtn}
+                      onClick={() => { if (window.confirm('Tüm geçmiş silinsin mi?')) dispatch(clearHistory()); }}
+                    >
+                      🗑️ Geçmişi Temizle
+                    </button>
+                  </div>
+
+                  {history.map((entry, idx) => (
+                    <div key={entry.id} className={styles.historyCard}>
+                      {/* Kart başlığı */}
+                      <div className={styles.historyCardHeader}>
+                        <div className={styles.historyCardTitle}>
+                          <span className={styles.historyNum}>#{history.length - idx}</span>
+                          <span className={styles.historyChampion}>
+                            🏆 {entry.standings[0]?.player}
+                          </span>
+                        </div>
+                        <div className={styles.historyMeta}>
+                          <span>{new Date(entry.date).toLocaleDateString('tr-TR', { day:'numeric', month:'long', year:'numeric' })}</span>
+                          <span>{new Date(entry.date).toLocaleTimeString('tr-TR', { hour:'2-digit', minute:'2-digit' })}</span>
+                          <span>{entry.players.length} oyuncu · {entry.playedMatches} maç</span>
+                        </div>
+                      </div>
+
+                      {/* Mini puan tablosu */}
+                      <table className={styles.historyTable}>
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Oyuncu</th>
+                            <th>O</th>
+                            <th>G</th>
+                            <th>B</th>
+                            <th>M</th>
+                            <th>AG</th>
+                            <th>YG</th>
+                            <th>Av</th>
+                            <th>Pts</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {entry.standings.map((row, i) => (
+                            <tr key={row.player} className={i === 0 ? styles.topRow : ''}>
+                              <td>{i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1}</td>
+                              <td className={styles.playerCell}>{row.player}</td>
+                              <td>{row.O}</td>
+                              <td className={styles.win}>{row.G}</td>
+                              <td>{row.B}</td>
+                              <td className={styles.loss}>{row.M}</td>
+                              <td>{row.AY}</td>
+                              <td>{row.YY}</td>
+                              <td>{row.A > 0 ? `+${row.A}` : row.A}</td>
+                              <td className={styles.pts}>{row.Pts}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ))}
+                </>
               )}
             </div>
           )}
