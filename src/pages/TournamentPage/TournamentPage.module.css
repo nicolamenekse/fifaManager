@@ -276,6 +276,21 @@
   background: rgba(255, 70, 70, 0.3);
 }
 
+.editPlayersBtn {
+  padding: 8px 18px;
+  background: rgba(0, 168, 255, 0.15);
+  border: 1px solid #00a8ff;
+  border-radius: 8px;
+  color: #00a8ff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.editPlayersBtn:hover {
+  background: rgba(0, 168, 255, 0.3);
+}
+
 /* ─── Sekmeler ──────────────────────────────────────────────────────────── */
 .tabs {
   display: flex;

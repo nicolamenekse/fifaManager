@@ -258,6 +258,18 @@ export default function TournamentPage() {
             >
               🔄 Sıfırla
             </button>
+            <button
+              className={styles.editPlayersBtn}
+              onClick={() => {
+                if (window.confirm('Oyuncuları düzenlemek turnuvayı sıfırlayacak. Devam edilsin mi?')) {
+                  dispatch(resetTournament());
+                  setInputs({});
+                  setPlayerList(players.length > 0 ? [...players] : Object.keys(scorePlayers));
+                }
+              }}
+            >
+              ✏️ Oyuncu Ekle / Çıkar
+            </button>
           </div>
 
           {/* Sekme Menüsü */}
