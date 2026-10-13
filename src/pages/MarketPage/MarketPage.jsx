@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addPoints } from '../../redux/scoreSlice';
+import { logout } from '../../redux/auth/authOperations';
 import './MarketPage.css';
 
 const MarketPage = () => {
@@ -12,8 +13,8 @@ const MarketPage = () => {
     const [purchases, setPurchases] = useState([]);
 
     const users = [
-        { id: 1, name: 'Emin', email: 'emin@example.com' },
-        { id: 2, name: 'Irfan', email: 'irfan@example.com' },
+        { id: 1, name: 'Emin',   email: 'emin@example.com' },
+        { id: 2, name: 'İrfan',  email: 'irfan@example.com' },
         { id: 3, name: 'Mehmet', email: 'mehmet@example.com' },
     ];
 
@@ -62,6 +63,7 @@ const MarketPage = () => {
     };
 
     const handleLogout = () => {
+        dispatch(logout());
         navigate('/');
     };
 

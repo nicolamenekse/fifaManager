@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage'
 import authReducer from './auth/authSlice'
 import matchReducer from "./match/matchSlice"
 import scoreReducer from './scoreSlice'
+import tournamentReducer from './tournament/tournamentSlice'
 
 const authpersistConfig = {
     key: "auth",
@@ -16,7 +17,7 @@ const authpersistConfig = {
 const matchPersistConfig = {
     key:"match",
     storage,
-    whiteList:["items"]
+    whitelist: ["items"]   // ✅ düzeltildi: whiteList → whitelist
 }
 
 const scorePersistConfig = {
@@ -25,10 +26,17 @@ const scorePersistConfig = {
     whitelist: ["players"]
 }
 
+const tournamentPersistConfig = {
+    key: "tournament",
+    storage,
+    whitelist: ["players", "rounds", "standings", "isGenerated"]
+}
+
 const rootReducer = combineReducers({
     auth: persistReducer(authpersistConfig, authReducer),
     match: persistReducer(matchPersistConfig, matchReducer),
-    scores: persistReducer(scorePersistConfig, scoreReducer)
+    scores: persistReducer(scorePersistConfig, scoreReducer),
+    tournament: persistReducer(tournamentPersistConfig, tournamentReducer)
 })
 
 export const store = configureStore({

@@ -44,6 +44,10 @@ export default function MatchPage() {
     navigate('/market');
   };
 
+  const goToTournament = () => {
+    navigate('/tournament');
+  };
+
   return (
     <div className={styles.container}>
       <Formik initialValues={initialValues} onSubmit={handleAddMatch} >
@@ -90,6 +94,9 @@ export default function MatchPage() {
       <div className={styles.buttonContainer}>
         <button className={styles.marketButton} onClick={goToMarket}>
           Market
+        </button>
+        <button className={styles.tournamentButton} onClick={goToTournament}>
+          🏆 Turnuva
         </button>
         <button className={styles.exitButton} onClick={exitClick}>
           Çıkış yap
