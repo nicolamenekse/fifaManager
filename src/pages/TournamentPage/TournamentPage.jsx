@@ -9,6 +9,14 @@ import {
 import { addPoints } from '../../redux/scoreSlice';
 import styles from './TournamentPage.module.css';
 
+// Kaç tur & maç olacağını hesapla
+function getTournamentInfo(n) {
+  const teams = n % 2 === 0 ? n : n + 1;
+  const rounds = teams - 1;
+  const matches = (n * (n - 1)) / 2;
+  return { rounds, matches };
+}
+
 export default function TournamentPage() {
   const dispatch  = useDispatch();
   const navigate  = useNavigate();
@@ -18,13 +26,35 @@ export default function TournamentPage() {
   );
   const scorePlayers = useSelector((s) => s.scores.players);
 
+  // Başlat ekranı: oyuncu listesi (scoreSlice'tan ön doldur)
+  const [playerList, setPlayerList] = useState(() => Object.keys(scorePlayers));
+  const [nameInput, setNameInput]   = useState('');
+  const [nameError, setNameError]   = useState('');
+
   // Yerel skor girişleri { matchId: { home: '', away: '' } }
   const [inputs, setInputs] = useState({});
   const [activeTab, setActiveTab] = useState('fixture'); // 'fixture' | 'standings'
 
+  // ─── Oyuncu ekle ────────────────────────────────────────────────────────
+  const handleAddPlayer = () => {
+    const trimmed = nameInput.trim();
+    if (!trimmed) { setNameError('İsim boş olamaz'); return; }
+    if (playerList.map(p => p.toLowerCase()).includes(trimmed.toLowerCase())) {
+      setNameError('Bu isim zaten listede'); return;
+    }
+    setPlayerList(prev => [...prev, trimmed]);
+    setNameInput('');
+    setNameError('');
+  };
+
+  // ─── Oyuncu kaldır ──────────────────────────────────────────────────────
+  const handleRemovePlayer = (name) => {
+    setPlayerList(prev => prev.filter(p => p !== name));
+  };
+
   // ─── Turnuva oluştur ────────────────────────────────────────────────────
   const handleGenerate = () => {
-    const playerList = Object.keys(scorePlayers);
+    if (playerList.length < 2) return;
     dispatch(generateTournament(playerList));
     setInputs({});
   };
@@ -143,18 +173,57 @@ export default function TournamentPage() {
           <div className={styles.startCard}>
             <div className={styles.startIcon}>⚽</div>
             <h2>Turnuva Başlat</h2>
-            <p>
-              Turnuvaya katılacak oyuncular:{' '}
-              <strong>{Object.keys(scorePlayers).join(', ')}</strong>
-            </p>
-            <p className={styles.ruleText}>
-              {Object.keys(scorePlayers).length === 3
-                ? '3 oyuncu → 3 tur, herkes herkesle 1 maç'
-                : Object.keys(scorePlayers).length === 4
-                ? '4 oyuncu → 3 tur, her turda 2 maç'
-                : `${Object.keys(scorePlayers).length} oyuncu → Round-Robin`}
-            </p>
-            <button className={styles.generateBtn} onClick={handleGenerate}>
+
+            {/* Oyuncu Ekleme */}
+            <div className={styles.addPlayerRow}>
+              <input
+                className={styles.nameInput}
+                type="text"
+                placeholder="Oyuncu adı gir..."
+                value={nameInput}
+                onChange={(e) => { setNameInput(e.target.value); setNameError(''); }}
+                onKeyDown={(e) => e.key === 'Enter' && handleAddPlayer()}
+                maxLength={20}
+              />
+              <button className={styles.addBtn} onClick={handleAddPlayer}>+</button>
+            </div>
+            {nameError && <p className={styles.errorText}>{nameError}</p>}
+
+            {/* Oyuncu Listesi */}
+            <div className={styles.playerChips}>
+              {playerList.map((name) => (
+                <div key={name} className={styles.chip}>
+                  <span>👤 {name}</span>
+                  <button
+                    className={styles.chipRemove}
+                    onClick={() => handleRemovePlayer(name)}
+                    title="Kaldır"
+                  >×</button>
+                </div>
+              ))}
+              {playerList.length === 0 && (
+                <p className={styles.emptyHint}>Henüz oyuncu eklenmedi</p>
+              )}
+            </div>
+
+            {/* Turnuva Bilgisi */}
+            {playerList.length >= 2 && (() => {
+              const { rounds: r, matches: m } = getTournamentInfo(playerList.length);
+              return (
+                <p className={styles.ruleText}>
+                  {playerList.length} oyuncu → {r} tur, toplam {m} maç
+                </p>
+              );
+            })()}
+            {playerList.length === 1 && (
+              <p className={styles.ruleText}>En az 2 oyuncu gerekli</p>
+            )}
+
+            <button
+              className={styles.generateBtn}
+              onClick={handleGenerate}
+              disabled={playerList.length < 2}
+            >
               🎯 Fikstürü Oluştur
             </button>
           </div>
@@ -183,6 +252,7 @@ export default function TournamentPage() {
                 if (window.confirm('Turnuvayı sıfırlamak istiyor musun?')) {
                   dispatch(resetTournament());
                   setInputs({});
+                  setPlayerList(Object.keys(scorePlayers));
                 }
               }}
             >

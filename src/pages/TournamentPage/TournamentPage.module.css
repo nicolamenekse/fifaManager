@@ -1,3 +1,104 @@
+/* ─── Oyuncu Ekleme Alanı ───────────────────────────────────────────────── */
+.addPlayerRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.nameInput {
+  flex: 1;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.nameInput:focus {
+  border-color: #ffd700;
+}
+.nameInput::placeholder { color: #555; }
+
+.addBtn {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.addBtn:hover { transform: scale(1.1); }
+
+.errorText {
+  color: #ff4646;
+  font-size: 12px;
+  margin: 2px 0 6px;
+  text-align: left;
+}
+
+/* ─── Oyuncu Chip'leri ──────────────────────────────────────────────────── */
+.playerChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 16px;
+  min-height: 42px;
+  justify-content: center;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 20px;
+  padding: 6px 12px 6px 10px;
+  font-size: 14px;
+  color: #fff;
+  animation: chipIn 0.2s ease;
+}
+
+@keyframes chipIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.chipRemove {
+  background: none;
+  border: none;
+  color: #ff6666;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+.chipRemove:hover { color: #ff0000; }
+
+.emptyHint {
+  color: #444;
+  font-size: 13px;
+  font-style: italic;
+  align-self: center;
+  margin: 0;
+}
+
+/* ─── Başlat butonu disabled ────────────────────────────────────────────── */
+.generateBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 /* ─── Layout ────────────────────────────────────────────────────────────── */
 .container {
   min-height: 100vh;
